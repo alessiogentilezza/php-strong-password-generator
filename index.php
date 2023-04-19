@@ -12,20 +12,9 @@
 <body>
     <?php
 
+    require __DIR__ . '/function.php';
 
-    function genera_parola_casuale($lunghezzaPassword)
-    {
-        $caratteri = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+=-{}[]|\:;"<>,.?/~`';
-        $parola = '';
-        $caratteri_lunghezza = strlen($caratteri) - 1;
-        for ($i = 0; $i < $lunghezzaPassword; $i++) {
-            $carattere = $caratteri[mt_rand(0, $caratteri_lunghezza)];
-            $parola .= $carattere;
-        }
-        return $parola;
-    }
-
-    if (isset($_GET['lunghezzaPassword']) && $_GET['lunghezzaPassword'] !== "string") {
+    if (isset($_GET['lunghezzaPassword']) && (int)$_GET['lunghezzaPassword']>0) {
         $response = genera_parola_casuale($_GET['lunghezzaPassword']);
     }
     ?>
@@ -41,7 +30,7 @@
         </form>
 
         <?php
-        if (!empty($response)) {
+        if (isset($response)) {
         ?>
             <div class="alert alert-info mt-3" role="alert">
                 <?php echo $response ?>
