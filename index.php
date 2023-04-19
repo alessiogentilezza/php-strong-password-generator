@@ -9,35 +9,37 @@
     <title>PHP Strong Password Generator</title>
 </head>
 
-<body>
+<body class="bg-info">
     <?php
 
     require __DIR__ . '/function.php';
 
-    if (isset($_GET['lunghezzaPassword']) && (int)$_GET['lunghezzaPassword']>0) {
+    if (isset($_GET['lunghezzaPassword']) && (int)$_GET['lunghezzaPassword'] > 0) {
         $response = genera_parola_casuale($_GET['lunghezzaPassword']);
     }
     ?>
 
     <div class="container">
-        <form action="index.php" method="GET">
-            <div class="mb-3">
-                <label for="lunghezzaPassword" class="form-label">Lunghezza password</label>
-                <input type="text" class="form-control" id="lunghezzaPassword" name="lunghezzaPassword">
-            </div>
-            <input class="btn btn-primary" type="submit" value="Submit">
-            <input class="btn btn-warning" type="reset" value="Reset">
-        </form>
+        <div class="position-absolute top-50 start-50 translate-middle">
+            <form action="index.php" method="GET">
+                <div class="mb-3">
+                    <label for="lunghezzaPassword" class="form-label">Lunghezza password</label>
+                    <input type="text" class="form-control" id="lunghezzaPassword" name="lunghezzaPassword" autocomplete="off">
+                </div>
+                <input class="btn btn-primary" type="submit" value="Submit">
+                <input class="btn btn-warning" type="reset" value="Reset">
+            </form>
 
-        <?php
-        if (isset($response)) {
-        ?>
-            <div class="alert alert-info mt-3" role="alert">
-                <?php echo $response ?>
-            </div>
-        <?php
-        }
-        ?>
+            <?php
+            if (isset($response)) {
+            ?>
+                <div class="alert alert-info mt-3" role="alert">
+                    <?php echo $response ?>
+                </div>
+            <?php
+            }
+            ?>
+        </div>
     </div>
 
 
