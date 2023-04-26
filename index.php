@@ -14,17 +14,18 @@
 
     require __DIR__ . '/function.php';
 
-    if (isset($_GET['lunghezzaPassword']) && (int)$_GET['lunghezzaPassword'] > 0) {
+    if (isset($_GET['lunghezzaPassword'])) {
         $response = genera_parola_casuale($_GET['lunghezzaPassword']);
-    }
+    };
     ?>
 
     <div class="container">
         <div class="position-absolute top-50 start-50 translate-middle">
             <form action="index.php" method="GET">
                 <div class="mb-3">
-                    <label for="lunghezzaPassword" class="form-label">Lunghezza password</label>
-                    <input type="text" class="form-control" id="lunghezzaPassword" name="lunghezzaPassword" autocomplete="off">
+                    <h3 class="text-white">Genera la tua password sicura scegliendone la lunghezza</h3>
+                    <label for="lunghezzaPassword" class="form-label">Inserisci un numero da 8 a 32</label>
+                    <input type="text" class="form-control" id="lunghezzaPassword" name="lunghezzaPassword" autocomplete="off"> <!-- valori min e max -->
                 </div>
                 <input class="btn btn-primary" type="submit" value="Submit">
                 <input class="btn btn-warning" type="reset" value="Reset">
@@ -39,7 +40,28 @@
             <?php
             }
             ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
+
+
+
+
+
+
+
+
     </div>
 
 
